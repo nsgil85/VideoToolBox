@@ -1,7 +1,7 @@
 from datetime import datetime
 import numpy as np
 import cv2
-import tqdm
+from tqdm import tqdm
 
 def show_img(img:np.ndarray):
     cv2.namedWindow('window',cv2.WINDOW_NORMAL)
@@ -13,9 +13,8 @@ def load_video(path:str, save_dir:str = None, resize:float = None, length:int=-1
     vidcap = cv2.VideoCapture(path)
     fps = vidcap.get(cv2.CAP_PROP_FPS)
     frame_count = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
-    i=1
+    i=0
     pbar = tqdm(total = frame_count)
-    
     success,image = vidcap.read()
     pbar.update(i)
     print(image.shape)

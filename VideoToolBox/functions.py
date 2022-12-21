@@ -55,7 +55,7 @@ def save_video(path:str, frame_array:np.ndarray, fps:int, size, losses=None, fra
     if writer is None:
         out.release()
 
-def draw_number(frame:np.ndarray, num:int, x=:int 10, y=:int 10, message:str ="Frame: "):
+def draw_number(frame:np.ndarray, num:int, x:int =10, y:int =10, message:str ="Frame: "):
     image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype("./data/arial.ttf", 45)

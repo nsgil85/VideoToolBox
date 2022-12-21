@@ -13,7 +13,7 @@ def load_video(path:str, save_dir:str = None, resize:float = None, length:int=-1
     vidcap = cv2.VideoCapture(path)
     fps = vidcap.get(cv2.CAP_PROP_FPS)
     frame_count = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
-    i=0
+    i=1
     pbar = tqdm(total = frame_count)
     success,image = vidcap.read()
     pbar.update(i)

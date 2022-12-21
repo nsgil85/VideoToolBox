@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='VideoToolBox',
-    version='1.1.1',    
+    version='1.1.0',    
     description='A video processing package',
     url='https://github.com/nsgil85/VideoToolBox',
     author='Gil h',

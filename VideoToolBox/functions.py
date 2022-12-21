@@ -8,7 +8,7 @@ def show_img(img):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-def load_video(path:str, save_dir = None:str, resize = None:float, length = -1:int): # N x H x W x C
+def load_video(path:str, save_dir:str = None, resize:float = None, length:int=-1): # N x H x W x C
     vidcap = cv2.VideoCapture(path)
     fps = vidcap.get(cv2.CAP_PROP_FPS)
     success,image = vidcap.read()

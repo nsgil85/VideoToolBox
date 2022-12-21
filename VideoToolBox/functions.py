@@ -1,6 +1,7 @@
 from datetime import datetime
 import numpy as np
 import cv2
+import tqdm
 
 def show_img(img:np.ndarray):
     cv2.namedWindow('window',cv2.WINDOW_NORMAL)
@@ -11,7 +12,12 @@ def show_img(img:np.ndarray):
 def load_video(path:str, save_dir:str = None, resize:float = None, length:int=-1): # N x H x W x C
     vidcap = cv2.VideoCapture(path)
     fps = vidcap.get(cv2.CAP_PROP_FPS)
+    frame_count = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
+    i=1
+    pbar = tqdm(total = frame_count)
+    
     success,image = vidcap.read()
+    pbar.update(i)
     print(image.shape)
     height, width, layers = image.shape
     if resize is None:
@@ -22,14 +28,17 @@ def load_video(path:str, save_dir:str = None, resize:float = None, length:int=-1
         size = resize
     count = 0
     frames = []
+    
     while success:  
         if resize is not None:
             image = cv2.resize(image, size, interpolation = cv2.INTER_LINEAR)
         if save_dir != None:
             path = os.path.join(save_dir, "frame_" + str(count).zfill(4) + ".png")
             cv2.imwrite(path, image) 
+        
         frames.append(image)
         success,image = vidcap.read()
+        pbar.update(i)
         count += 1
         if length > 0 and count >= length:
             break

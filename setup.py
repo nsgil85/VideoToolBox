@@ -9,7 +9,7 @@ setup(
     author_email='nsgil85@gmail.com',
     license='BSD 2-clause',
     packages=['VideoToolBox'],
-    install_requires=['numpy','opencv-python],
+    install_requires=['numpy','opencv-python'],
 
     classifiers=[
         'Development Status :: 1 - Planning',

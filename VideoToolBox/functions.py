@@ -2,7 +2,7 @@ from datetime import datetime
 import numpy as np
 
 
-def show_img(img):
+def show_img(img:np.ndarray):
     cv2.namedWindow('window',cv2.WINDOW_NORMAL)
     cv2.imshow('window',img)
     cv2.waitKey(0)
@@ -37,7 +37,7 @@ def load_video(path:str, save_dir:str = None, resize:float = None, length:int=-1
     return frames, fps, size
 
     
-def save_video(path:str, frame_array:np.ndarray, fps:int, size, losses=None, frame_number=False:bool, writer=None):
+def save_video(path:str, frame_array:np.ndarray, fps:int, size, losses=None, frame_number:bool=False, writer=None):
     if writer is None:
         if path[-3:] == "mp4":
             out = cv2.VideoWriter(path, cv2.VideoWriter_fourcc(*'mp4v'), fps, size)
@@ -55,7 +55,7 @@ def save_video(path:str, frame_array:np.ndarray, fps:int, size, losses=None, fra
     if writer is None:
         out.release()
 
-def draw_number(frame:np.ndarray, num:int, x=10:int, y=10:int, message="Frame: ":str):
+def draw_number(frame:np.ndarray, num:int, x=:int 10, y=:int 10, message:str ="Frame: "):
     image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype("./data/arial.ttf", 45)
